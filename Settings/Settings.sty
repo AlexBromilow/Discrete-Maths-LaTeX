@@ -1,0 +1,28 @@
+\usepackage{Settings/Packages}
+\usepackage{Settings/Commands}
+
+\setabbreviationstyle[acronym]{long-short}
+
+\makeglossaries
+
+\pagestyle{fancy}
+\lhead{Discrete Mathematics}
+\rhead{\thechapter \quad \rightmark}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+\hypersetup{
+    colorlinks = true,
+    linkcolor= blue,
+    urlcolor = red,
+    pdftitle = {Discrete Mathematics}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\newgeometry{
+    top=0.75in,
+    bottom=0.75in,
+    outer=0.75in,
+    inner=1.5in
+}
