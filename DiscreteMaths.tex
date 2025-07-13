@@ -1,5 +1,7 @@
-\documentclass{report}
+\documentclass[twoside, a4paper]{book}
 \usepackage{Settings/Settings}
+
+\includeonly{Chapters/Chapter2-IntroToSets} %Use this to only render the current chapter being worked on
 
 \title{Discrete Mathematics}
 \author{Alec Gideon}
@@ -17,6 +19,15 @@ This is a transcription of the course provided by Dr Trefor Bazett on his \href{
 
 \listoffigures
 
+\pagestyle{fancy}
+
 \include{Chapters/Chapter1-Intro}
+\include{Chapters/Chapter2-IntroToSets}
+
+\appendix
+
+\tcblistof[\chapter]{dfn}{Definitions}
+
+\tcblistof[\chapter]{exmpls}{Examples}
 
 \end{document}

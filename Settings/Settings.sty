@@ -1,13 +1,13 @@
 \usepackage{Settings/Packages}
 \usepackage{Settings/Commands}
 
+
 \setabbreviationstyle[acronym]{long-short}
 
 \makeglossaries
 
-\pagestyle{fancy}
 \lhead{Discrete Mathematics}
-\rhead{\thechapter \quad \rightmark}
+\rhead{\nouppercase{\leftmark}}
 \cfoot{Page \thepage\ of \pageref{LastPage}}
 
 \hypersetup{
@@ -16,6 +16,16 @@
     urlcolor = red,
     pdftitle = {Discrete Mathematics}
 }
+
+\newtcbtheorem[number within=chapter,list inside={dfn}]{dfn}{Definition}{colback=blue!5!white,
+   colframe=black!50,
+   list entry={\thetcbcounter: #2},
+   }{definition}
+
+\newtcbtheorem[number within=chapter,list inside={exmpls}]{exmpl}{Example}{colback=blue!5!white,
+   colframe=blue!75!black,
+   list entry={\thetcbcounter: #2},
+   }{example}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
@@ -26,3 +36,9 @@
     outer=0.75in,
     inner=1.5in
 }
+
+\crefname{tcb@cnt@dfn}{definition}{definitions}
+\Crefname{tcb@cnt@dfn}{Definition}{Definitions}
+
+\crefname{tcb@cnt@exmpl}{example}{examples}
+\Crefname{tcb@cnt@exmpl}{Example}{Examples}

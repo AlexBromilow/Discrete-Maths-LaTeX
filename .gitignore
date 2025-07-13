@@ -5,6 +5,7 @@
 *.bbl
 *.bcf
 *.blg
+*.dfn
 *.glg
 *.glo
 *.gls
@@ -18,3 +19,4 @@
 *.fdb_latexmk
 *.fls
 *.synctex.gz
+*.exmpls
