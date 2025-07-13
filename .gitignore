@@ -15,3 +15,6 @@
 *.pdf
 *.run.xml
 *.toc
+*.fdb_latexmk
+*.fls
+*.synctex.gz
