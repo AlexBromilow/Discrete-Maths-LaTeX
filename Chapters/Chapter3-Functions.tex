@@ -1,0 +1,77 @@
+\chapter{Functions}
+Now that we have a good unserstanding of sets, relations, Cartesian products, and ordered pairs, let's take a look back at something familiar and reinvestigate functions and see if we can re-cast it in our new language of sets.
+
+\section{The Intuitive Idea of a Function}
+Let's take a look at a very familiar function, $f(x) = x^2$
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                xmin=-2,
+                xmax=2,
+                ymin=-2,
+                ymax=3,
+                axis lines = middle,
+                xlabel=$x$,
+                ylabel=$y$,
+                clip=false
+            ]
+            \addplot[samples=25, domain=-1.5:1.5]{x^2} node[right,pos=0.9]{$f(x) = x^2$};
+        \end{axis}
+    \end{tikzpicture}
+    \label{fig:xSquared}
+    \caption{Graph of $f(x) = x^2$}
+\end{figure}
+
+You can think of this function $f(x)$ as taking some input $x$, and then outputting another value which is the plotted on then axis above. In other words, $f(x)$ takes some value $x \in \R$ and outputs some value $(x,y) \in \R \times \R$, an ordered pair.
+
+There are two criteria necessary in order for a function to be valid, which we have defined below.
+
+\begin{dfn}[label={def:functionClassic}]{Classic Definition of a Function}{dfnfunctionClassic}
+    For $f(x)$ to be a valid function it must satisfy the following:
+    \begin{itemize}
+        \item For every input $x$ in the domain (all the input values) of the function $f$, $f(x)$ must exist (i.e. all inputs give an output)
+        \item For every input $x$ in the domain of the function $f$, $f(x)$ must be unique (i.e. no single input can give more than one output)
+    \end{itemize}
+\end{dfn}
+
+\section{Formal Definition of a Function}
+
+Now let's take a look at creating a formal definition for a function. We already alluded to the core idea that will form the foundation of our definition - when we mentioned that the output of a function is an ordered pair. In fact, we're going to define functions as a set of ordered pairs which follows a few constraints.
+
+\begin{dfn}[label={def:function}]{Function}{dfnFunction}
+    A \emph{function} $F$ between the sets $A$ and $B$ is a relation between $A$ and $B$ such that:
+    \begin{enumerate}
+        \item For every element $x \in A$ there is an element $y \in B$ such that $(x,y) \in F$. This means that for every input $x$, there is some output $y$. This could be written as $F(x) = y$.
+        \item If $(x,y) \in F$ and $(x,z) \in F$, then $y = z$. This means that for every input $x$, there must only ever be one output.
+    \end{enumerate}
+\end{dfn}
+
+Let's take a look at an example of a relation and see if it fits our definition of a function.
+
+\begin{exmpl}[label={exmpl:circleRelation}]{Circle Relation}{xmplcircleRelation}
+    Consider the relation $C$ where $(x,y) \in C$ if $x^2 + y^2 = 1$. Is this a function?\\
+
+    First of all, let's plot this relation on a graph, and you'll see why it is called the circle relation:
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    axis lines=middle,
+                    xmin=-2,
+                    xmax=2,
+                    ymin=-2,
+                    ymax=2,
+                    axis equal image,
+                    clip=false
+                ]
+                \draw (axis cs:0,0) circle [radius=1];
+                \node[label={$x^2 + y^2 = 1$}, anchor=south west] at (axis cs: 1.5,0.5){};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+    For this relation to be a function it must satisfy both parts of \cref{def:function}. For part 1, we could define out domain (set $A$ in the definition) as just $\{x | -1 \leq x \leq 1\}$, in which case all elements in the domain have an output.\\
+    The more interesting situation comes from looking at part 2, lets see if we can call this a function by restricting the input and output sets to both be $[-1,1]$ - that is the set of all points from -1 to 1 inclusive of the endpoints. This relation fails the definition of a function even with this restricted domain, and we can show this as long as we have 1 example of an input that gives two outputs.
+
+    Let's take $x = 0$, this is within our domain so is a valid input for the relation. Now what values of $y$ exist that satisfy this relation with $x = 0$? In this case, both $y = 1$ \textbf{and} $y = -1$ would satisfy the relation, meaning that both $(0,1)$ and $(0,1) \in C$. This contradicts part 2 of our function definition, therefore this isn't a function.
+\end{exmpl}
