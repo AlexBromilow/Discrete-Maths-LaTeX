@@ -1,0 +1,620 @@
+\chapter{Introduction to Logic}
+In this chapter, we're going to be introduced to mathematical logic. Logic, in this context, is a formal approach to understanding reasoning, looing at the \emph{structure} of an argument, rather than its contents, in order to gain a deeper understanding of how mathematics operates.
+
+\section{Logical Statements}
+\begin{dfn}[label={def:statements}]{Statements}{dfnstatements}
+    A \emph{statement} is a sentence that is either True (T) or False (F). For example:
+    \begin{itemize}
+        \item p: $5 > 2$ - this is a statement that is true
+        \item q: $2 > 5$ - this is a statement that is false
+        \item r: $x > 2$ - this isn't a statement, it has no truth-value in the current context. If we knew more about $x$ we might be able to say if this is true or false.
+    \end{itemize}
+\end{dfn}
+
+In the above definition, we have included $p,q,r$ at the start of each line. This is a short-hand way of refering to statements (ignoring for a moment that $r$ isn't actually a statement). We can define $p$ as the statement $5 > 2$ and then we can use $p$ to refer to this statement going forward.
+
+It is also possible to create new statements from old ones, but to do this we're going to need to define a few more concepts and their notation
+
+\begin{dfn}[label={def:logicNot}]{Negation (\emph{Not} $\lnot$)}{dfnlogicNot}
+    The statement $\lnot p$ (read as \emph{not p}) is true if, and only if, $p$ is false. For example if $p: 5 > 2$, then $\lnot p$ is false, since $p$ is true. However if $p:7<3$ then $p$ is false and $\lnot p$ is true.
+\end{dfn}
+
+\begin{dfn}[label={def:logicAnd}]{Conjunction (\emph{And} $\land$)}{dfnlogicAnd}
+    The statement $p \land q$ (read as \emph{p and q}) is true if, and only if, both $p$ and $q$ are true. For example:
+    \begin{itemize}
+        \item $p:5 > 2$ is true and $q: 7< 9$ is true, therefore $p \land q$ is true.
+        \item $p:5 > 2$ is true but $q: 7< 3$ is false, therefore $p \land q$ is false.
+    \end{itemize}
+\end{dfn}
+
+\begin{dfn}[label={def:logicOr}]{Disjunction (Or $\lor$)}{dfnlogicOr}
+    The statement $p \lor q$ (read as \emph{p or q}) is true if, and only if, at least one of $p$ and $q$ is true. For example:
+    \begin{itemize}
+        \item $p:5 > 2$ is true and $q: 7< 9$ is true, therefore $p \lor q$ is true.
+        \item $p: 7< 3$ is false but $q:5 > 2$ is true , therefore $p \lor q$ is true.
+        \item $p:7 < 3$ and $q: 5 < 2$ are both false, therefore $p \lor q$ is false.
+    \end{itemize}
+\end{dfn}
+
+Using these three logic symbols, we can construct and analyse statements of varying length and complexity. Let's take a look at an example
+
+\begin{exmpl}[label={exmpl:logicGrayShirt}]{Shirts and Shorts}{xmpllogicGrayShirt}
+    Let's analyse the statement "My shirt is gray but my shorts are not". The first step is to identify the smaller statements that make up this larger one, i.e. the statements "My shirt is gray" and the statement "my shorts are not".\\
+
+    Let's define $p:$"my shirt is gray" and $q:$"my shorts are gray". We haven't included the "not" in the second statment on purpose, let's see how this analysis goes having $q$ be the positive statement.\\
+
+    If we want to combine these two statements back to make the orginal statement, but using our new logic symbols instead, we can write this as
+    $$ p \land \lnot q$$
+
+    Notice here we have replaced the word "but" with our symbol for "and" since the statements  "My shirt is gray but my shorts are not" and "My shirt is gray \textbf{and} my shorts are not" mean the same thing.
+\end{exmpl}
+
+\section{Truth Tables}
+In the above example, we were able to work out what statements were true and which were false relatively quickly, but more complicated statements require a more robust method of working out which statements are true and which aren't. This is where \emph{truth tables} come in.\\
+
+The way truth tables work is, you have a column for each fundamental statement ( such as $p$ or $q$) and a column for each complex statement (such as $p \land q$), and in each row you put whether your fundamental statements are true or false, and then what that means for the complex statements. Let's try and example
+
+\begin{exmpl}[label={exmpl:truthTableNegation}]{Negation ($\lnot$) Truth Table}{xmpltruthTableNegation}
+    Let's look at the truth table for $\lnot$, to start we have a column for the statement $p$ and a column for the statement $\lnot p$:
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            $p$ & $\lnot p$ \\
+            \hline
+        \end{tabular}
+    \end{center}
+    Now we need to add in our rows, since $p$ can be either true or false, we will need 2 rows:
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            $p$ & $\lnot p$ \\
+            \hline
+            T   &           \\
+            \hline
+            F   &           \\
+            \hline
+        \end{tabular}
+    \end{center}
+    Now we fill in our $\lnot p$ column based off of the $p$ column, remembering that $\lnot p$ is false if $p$ is true:
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            $p$ & $\lnot p$ \\
+            \hline
+            T   & F         \\
+            \hline
+            F   & T         \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{exmpl}
+
+Let's take a look at another example, this time we'll look at conjunction, i.e. a statement like $p \land q$.
+
+\begin{exmpl}[label={exmpl:truthTableConjunction}]{Conjunction ($\land$) Truth Table}{xmpltruthTableConjunction}
+    In this example, we now have 2 fundamental statements, $p$ and $q$. Let's start a table which includes both of these, and the statement $p \land q$:
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $p$ & $q$ & $p \land q$ \\
+            \hline
+        \end{tabular}
+    \end{center}
+    Both of these fundamental statements could be either true or false, which gives us 4 possible configurations, as shown in the table below
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $p$ & $q$ & $p \land q$ \\
+            \hline
+            T   & T   &             \\
+            \hline
+            T   & F   &             \\
+            \hline
+            F   & T   &             \\
+            \hline
+            F   & F   &             \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+    Now we can use our definition for conjunction, \cref{def:logicAnd}, to fill in the rest of the table:
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $p$ & $q$ & $p \land q$ \\
+            \hline
+            T   & T   & T           \\
+            \hline
+            T   & F   & F           \\
+            \hline
+            F   & T   & F           \\
+            \hline
+            F   & F   & F           \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+    Since $\land$ requires both inputs to be true, the truth table for conjunction returns false in all other instances
+\end{exmpl}
+
+Lets also look at the truth table for disjunction, i.e. statements like $p \lor q$.
+
+\begin{exmpl}[label={exmpl:truthTableDisjunction}]{Disjunction ($\lor$) Truth Table}{xmpltruthTableDisjunction}
+    Similarly to \cref{exmpl:truthTableConjunction}, we have 2 fundamental statements, $p$ and $q$. Let's start a table which includes both of these, and the statement $p \lor q$, and fill in the truth values for the fundamental statements:
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $p$ & $q$ & $p \lor q$ \\
+            \hline
+            T   & T   &            \\
+            \hline
+            T   & F   &            \\
+            \hline
+            F   & T   &            \\
+            \hline
+            F   & F   &            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+    Now we can use our definition for disjunction, \cref{def:logicOr}, to fill in the rest of the table: \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $p$ & $q$ & $p \lor q$ \\
+            \hline
+            T   & T   & T          \\
+            \hline
+            T   & F   & T          \\
+            \hline
+            F   & T   & T          \\
+            \hline
+            F   & F   & F          \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+    Since $\lor$ only requires one input to be true, the truth table for disjunction returns true in all instances except where both inputs are false.
+\end{exmpl}
+
+Now let's look at one final example, the truth table for the statement $\lnot p \lor \lnot q$
+\newpage
+
+\begin{exmpl}[label={exmpl:truthTableNPOQ}]{$\lnot p \lor \lnot q$ Truth Table}{xmpltruthTableNPOQ}
+    Lets start by adding in all the table headers we're going to need and the truth value for out fundamental statements. In this example we have our two fundamental statements, $p$ and $q$, but we also have the statements $\lnot p$ and $\lnot q$, and then finally we have $\lnot p \lor \lnot q$:
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            $p$ & $q$ & $\lnot p$ & $\lnot q$ & $\lnot p \lor \lnot q$ \\
+            \hline
+            T   & T   &           &           &                        \\
+            \hline
+            T   & F   &           &           &                        \\
+            \hline
+            F   & T   &           &           &                        \\
+            \hline
+            T   & F   &           &           &                        \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+    Now let's first handle the two negation columns and fill those in based on our negation table, \cref{exmpl:truthTableNegation}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            $p$ & $q$ & $\lnot p$ & $\lnot q$ & $\lnot p \lor \lnot q$ \\
+            \hline
+            T   & T   & F         & F         &                        \\
+            \hline
+            T   & F   & F         & T         &                        \\
+            \hline
+            F   & T   & T         & F         &                        \\
+            \hline
+            F   & F   & T         & T         &                        \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+
+    Finally, let's use the values of $\lnot p$ and $\lnot q$ as the inputs for our disjunction table, \cref{exmpl:truthTableDisjunction}, giving our final output:
+
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            $p$ & $q$ & $\lnot p$ & $\lnot q$ & $\lnot p \lor \lnot q$ \\
+            \hline
+            T   & T   & F         & F         & F                      \\
+            \hline
+            T   & F   & F         & T         & T                      \\
+            \hline
+            F   & T   & T         & F         & T                      \\
+            \hline
+            F   & F   & T         & T         & T                      \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+
+    Notice anything about this final column? It is the exact opposite (the \emph{negation}) of our conjunction ($\land$) table:
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            $p$ & $q$ & $p \land q$ & $\lnot(p \land q)$ \\
+            \hline
+            T   & T   & T           & F                  \\
+            \hline
+            T   & F   & F           & T                  \\
+            \hline
+            F   & T   & F           & T                  \\
+            \hline
+            F   & F   & F           & T                  \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+    This shows that $\lnot (p \land q)$ is \emph{logically equivalent} to $\lnot p \lor \lnot q$.
+\end{exmpl}
+
+\section{Logical Equivalence of Two Statements}
+In the previous example, we introduced the idea of \emph{logical equivalence}, the idea of two different statements being the same thing written in two different ways.
+
+\begin{dfn}[label={def:logicalEquivalence}]{Logical Equivalence}{dfnlogicEquiv}
+    Two statements, $p$ and $q$ are \emph{logically equivalent} if they have the same truth table. This is written as $$ p \equiv q$$
+\end{dfn}
+
+Let's look at a simple example to understand what this means
+
+\begin{exmpl}[label={exmpl:logicEquivNotNot}]{Double Negative}{dfnlogicEquivNotNot}
+    Let's say we have the statement $p$, what can we say about the statement $\lnot (\lnot p)$? Intuitively, we know that a double negative cancels out, for example saying "I'm not not hungry" is the same as saying "I \textbf{am} hungry", but can we verify this using truth tables?
+
+    First let's build our truth table with the fundamental statement values filled in:
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $p$ & $\lnot p$ & $\lnot (\lnot p)$ \\
+            \hline
+            T   &           &                   \\
+            \hline
+            F   &           &                   \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+    Now lets fill in our $\lnot p$ column:
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $p$ & $\lnot p$ & $\lnot (\lnot p)$ \\
+            \hline
+            T   & F         &                   \\
+            \hline
+            F   & T         &                   \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+    Finally lets fill in our $\lnot (\lnot p)$ column:
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $p$ & $\lnot p$ & $\lnot (\lnot p)$ \\
+            \hline
+            T   & F         & T                 \\
+            \hline
+            F   & T         & F                 \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+    The columns for $p$ and $\lnot(\lnot p)$ are indentical, therefore they are logically equivalent, $p \equiv \lnot(\lnot p)$.
+\end{exmpl}
+
+\section{Tautologies and Contradictions}
+There is a special kind of statement known as a \emph{tautology} which we'll define as follows
+
+\begin{dfn}[label={def:tautology}]{Tautology}{dfnTautology}
+    A \emph{tautology, t,} is a statement which is always true.
+\end{dfn}
+
+Let's look at an example of a truth table when we use a tautology
+
+\begin{exmpl}[label={exmpl:tautologyOr}]{Tautology $t \lor p$}{xmpltautologyOr}
+    Let's say we have some tautology $t$ and some statement $p$ and we want to analyse $t \lor p$. The truth table will be as follows
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $t$ & $p$ & $t \lor p$ \\
+            \hline
+            T   & T   & T          \\
+            \hline
+            T   & F   & T          \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+    So using or ($\lor$) with a tautology gives another tautology.
+\end{exmpl}
+
+There is another special kind of logical statement, known as a \emph{contradiction}, which we define as follows
+
+\begin{dfn}[label={def:contradiction}]{Contradiction}{dfnContradiction}
+    A \emph{contradiction, c,} is a statement which is always false.
+\end{dfn}
+
+Let's look at an example of a truth table when we use a contradiction
+
+\begin{exmpl}[label={exmpl:contradictionAnd}]{Contradiction $c \land p$}{xmplcontradictionAnd}
+    Let's say we have some contradiction $c$ and some statement $p$ and we want to analyse $c \land p$. The truth table will be as follows
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $c$ & $p$ & $c \land p$ \\
+            \hline
+            F   & T   & F           \\
+            \hline
+            F   & F   & F           \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+    So using and ($\land$) with a contradiction gives another contradiction.
+\end{exmpl}
+
+\section{3 Ways to Show Logical Equivalence}
+\label{sec:logicalEquivalence}
+
+Let's take a look at 3 different ways to argue that two complex statements are logically equivalent.
+
+Let's say we want to determine if $$\lnot (p \lor q) \equiv \lnot p \land \lnot q$$
+
+\begin{enumerate}
+    \item \textbf{Reason check with examples}: The first method to check if two statements are equivalent is to try making real world examples. Let's set $p$: Chocolate is sour and $q$: Chocolate is savory. Putting these into the left hand side we get
+          $$\textit{It is \emph{NOT} the case that chocolate is either sour OR savory }$$
+          Looking at the right hand side we get
+          $$\textit{Chocolate is \emph{NOT} sour and it is \emph{NOT} savory }$$
+          Read these two statements over a few times and we notice that they are, in fact, saying the same thing - chocolate is neither sour nor savory.
+    \item \textbf{Truth Tables}: A more formal way to check if two statements are equivalent is to use truth tables. Here are the truth tables for the above statements:
+          \begin{center}
+              \begin{tabular}{|c|c|c|c|c|c|c|}
+                  \hline
+                  $p$ & $q$ & $\lnot p$ & $\lnot q$ & $p \lor q$ & $\lnot (p \lor q)$ & $\lnot p \land \lnot q$ \\
+                  \hline
+                  T   & T   & F         & F         & T          & F                  & F                       \\
+                  \hline
+                  T   & F   & F         & T         & T          & F                  & F                       \\
+                  \hline
+                  F   & T   & T         & F         & T          & F                  & F                       \\
+                  \hline
+                  F   & F   & T         & T         & F          & T                  & T                       \\
+                  \hline
+              \end{tabular}
+          \end{center}
+          This formally proves these two statements are equivalent.
+    \item \textbf{Logical Laws}: The final way to determining if statements are logically equivalent is to use logical laws, some of which we have already seen, like the examples listed below:
+          \begin{itemize}
+              \item DeMorgan's Laws:
+                    $$\lnot(p \lor q) \equiv \lnot p \land \lnot q$$
+                    $$\lnot(p \land q) \equiv \lnot p \lor \lnot q$$
+              \item Double Negative:
+                    $$p \equiv \lnot(\lnot p)$$
+              \item Identity Laws:
+                    $$p \lor c \equiv p$$
+                    $$p \land t \equiv p$$
+              \item Universal Bound laws:
+                    $$p \land c \equiv c$$
+                    $$p \lor t \equiv t$$
+          \end{itemize}
+          All of the above can be shown to be true using truth tables and they come in very handy when evaluating complex statements.
+          \begin{exmpl}[label={exmpl:logicLaws}]{Using logical laws}{xmpllogicLaws}
+              Let's use the laws defined above to evaluate $$ (\lnot (p \lor \lnot q)) \land t$$
+              First of all, we can use the indetity law with tautologies to say that
+              $$ (\lnot (p \lor \lnot q)) \land t \equiv  \lnot (p \lor \lnot q)$$
+              We can then use the first of DeMorgan's laws to say
+              $$\lnot (p \lor \lnot q) \equiv \lnot p \land \lnot (\lnot q)$$
+              and finally we can use the Double Negative law to say
+              $$ \lnot p \land \lnot (\lnot q) \equiv \lnot p \land q$$
+              so we have that
+              $$ (\lnot (p \lor \lnot q)) \land t \equiv \lnot p \land q$$
+          \end{exmpl}
+\end{enumerate}
+
+\section{Conditional Statements}
+Now that we have a good understanding of statements and logical analysis, let's take a look at \emph{conditional statements}.
+
+\begin{dfn}[label={def:conditionalStatements}]{Conditional Statements}{dfnConditionalStatements}
+    A \emph{conditional statement} is a statement of the form "if $p$ is true, then $q$ is true" where $p$ is called the \emph{hypothesis} and $q$ is called the \emph{conclusion}. This is written as $$p \to q$$
+\end{dfn}
+
+Let's see how we can combine this with our current understanding of logic by seeing if we can create a truth table
+
+\newpage
+\begin{exmpl}[label={exmpl:truthTableConditional}]{Conditional Statement Truth Table}{xmpltruthTableConditional}
+    Let's start by creating the outline of our table and filling in the possible values for our two statements
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $p$ & $q$ & $p \to q$ \\
+            \hline
+            T   & T   &           \\
+            \hline
+            T   & F   &           \\
+            \hline
+            F   & T   &           \\
+            \hline
+            F   & F   &           \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+
+    Now how do we fill in the final column? \Cref{def:conditionalStatements} says that if $p$ is true, then $q$ must be true, therefore the statement is true in the first row since both $p$ and $q$ are true.\\
+
+    In the second row, $p$ is still true but $q$ is false, meaning that $p$ being true does not then lead to $q$ being true, so our conditional statement is false.\\
+
+    For the final two rows, our hypothesis $p$ is false, but our definition of a conditional statement starts with "if $p$ is true" so the conditional statement doesn't actually apply here. In this case we would say they are \emph{vacuously true}, meaning that we can't properly evaluate the statement in this case, so we can neither prove nor disprove it. In this case we give the row in the truth table the value of true (T) so our final truth table for a conditonal statement is
+
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $p$ & $q$ & $p \to q$ \\
+            \hline
+            T   & T   & T         \\
+            \hline
+            T   & F   & F         \\
+            \hline
+            F   & T   & T         \\
+            \hline
+            F   & F   & T         \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+    Let's add two new columns to the table to better explain this
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            $p$ & $q$ & $p \to q$ & $\lnot p$ & $\lnot p \lor q$ \\
+            \hline
+            T   & T   & T         & F         & T                \\
+            \hline
+            T   & F   & F         & F         & F                \\
+            \hline
+            F   & T   & T         & T         & T                \\
+            \hline
+            F   & F   & T         & T         & T                \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vspace{0.5cm}
+    These extra two columns give a better understanding of why the two bottom rows of our original table evaluate to true. The last column is another way of phrasing our conditional statement. Rather than saying "if $p$ is true, then $q$ is true" what we're saying is "either $p$ is false, or $p$ is true". Take a moment to re-read this and convince yourself these are the same thing.\\
+
+    Consider the statement "if I study hard, then I will pass". We can say that $p$: "I study hard" and $q$:"I will pass". Using these we can rewrite the previous statement as
+    $$p \to q$$
+    Now let's consider the statement "Either I don't study hard, or I pass". Using the same fundamental statements as above, we can write this as
+    $$\lnot p \lor q$$
+\end{exmpl}
+
+\newpage
+
+\section{Vacuously True Statements}
+As we have discussed above, when the hypothesis of a conditional statement is false, we say the statement is \emph{vacuously true} - i.e. true in a way that is unimportant and doesn't tell us anything.\\
+
+For example, take the following statement\\
+\begin{center}
+    If the sky is purple, then grass is green
+\end{center}
+This is of the form \emph{if $p$ then $q$}. As we demonstrated above, we can rewrite any statement of the form $p \to q$ to the form $\lnot p \lor q$ so let's do that here
+\begin{center}
+    Either the sky is not purple or grass is green
+\end{center}
+This second form makes it much easier to see that the conditional statement is true since grass is (usually) green, meaning the statement is true regardless of whether the sky is purple or not.
+
+\section{Negating a Conditional Statement}
+\label{sec:negatingConditional}
+Let's take a look at what it means to negate a conditional statement, that is to evaluate a statement such as
+$$\lnot (p \to q)$$
+From our examples above, we know that this is equivalent to using a disjunctive argument. That is
+$$\lnot (p \to q) \equiv \lnot (\lnot p \lor q)$$
+Now we can use DeMorgan's law (stated in \Cref{sec:logicalEquivalence} ) to rewrite this as
+\begin{align*}
+    \lnot (p \to q) & \equiv \lnot (\lnot p \lor q)                            \\
+                    & \equiv \lnot \lnot p \land \lnot q \tag*{DeMorgan's Law} \\
+                    & \equiv p \land \lnot q \tag*{Double Negation}
+\end{align*}
+This should make sense if we remember what a conditional statement is saying. The statement $p \to q$ is saying that if $p$ is true, then $q$ must be true, so the negation of this would be if $p$ is true, then $q$ must be false. In other words $\lnot (p \to q)$ is only true when $p$ is true \emph{and} $q$ is false. This can be seen in the truth table we used before:
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        $p$ & $q$ & $p \to q$ & $\lnot (p \to q)$ \\
+        \hline
+        T   & T   & T         & F                 \\
+        \hline
+        T   & F   & F         & T                 \\
+        \hline
+        F   & T   & T         & F                 \\
+        \hline
+        F   & F   & T         & F                 \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\section{Contrapositive of a Conditional Statement}
+There are a few other types of statements that are all related to the conditional statement, in this section we're going to evaluate the \emph{contrapositive} statement.
+
+\begin{dfn}[label={def:contrapositive}]{Contrapositive Statements}{dfncontrapositive}
+    For a conditional statement $p \to q$, the \emph{contrapositive} statement is $$\lnot q \to \lnot p$$ These two statements are logically equivalent
+\end{dfn}
+
+We can demonstrate this using the truth table below
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        $p$ & $q$ & $\lnot p$ & $\lnot q$ & $p \to q$                          & $\lnot q \to \lnot p$              \\
+        \hline
+        T   & T   & F         & F         & T                                  & T (Vacuously)                      \\
+        \hline
+        T   & F   & F         & T         & F (\cref{sec:negatingConditional}) & F (\cref{sec:negatingConditional}) \\
+        \hline
+        F   & T   & T         & F         & T (Vacuously)                      & T (Vacuously)                      \\
+        \hline
+        F   & F   & T         & T         & T (Vacuously)                      & T                                  \\
+        \hline
+    \end{tabular}
+\end{center}
+
+We can also say that, since we know $p \to q \equiv \lnot p \lor q$ we can do the same with $\lnot q \to \lnot p$ and get
+\begin{align*}
+    \lnot q \to \lnot p & \equiv \lnot (\lnot q) \lor \lnot p          \\
+                        & \equiv q \lor \lnot p \tag*{Double Negation} \\
+                        & \equiv \lnot p \lor q
+\end{align*}
+Therefore $p \to q \equiv \lnot q \to \lnot p$.\\
+
+We can demonstrate this using the example we used previously of $p$: "I study hard" and $p$:"I will pass". Here we have $p \to q$ is the statement "If I study hard, then I will pass" and $\lnot q \to \lnot p$ can be interpreted as "If I don't pass, then I didn't study hard".\\
+
+Notice that at no point in this example did we come across the statement "If I pass, then I studied hard". This would be the conditional statement $q \to p$. This is something to be carful of when tackling mathematical logic, something that may seem equivalent when spoken in English isn't necessarily equivalent from a logical perspective.
+
+\section{Converse and Inverse of Conditional Statements}
+
+\begin{dfn}[label={def:conditionalConverse}]{Converse of a Conditional Statememt}{dfnConditionalConverse}
+    The \emph{converse} of a conditional statement $p \to q$ is the statement $q \to p$. It is important to note that
+    $$p \to q \not \equiv q \to p$$
+\end{dfn}
+
+Let's look at an example to fully understand this distinction
+
+\begin{exmpl}[label={exmpl:conditionalConverse}]{Converse of a Conditional Statement}{xmplConditionalConverse}
+    Let's take the statement "If it's a dog, then it's a mammal". In this example $p$: "It is a dog" and $q$: "It is a mammal". In this case $p \to q$ is true since the definition of a dog requires it to be a mammal - there a no non-mammal dogs.\\
+
+    If we consider the converse $q \to p$, this would be "If it is a mammal, then it is a dog". This is not the same thing, there are a lot of examples of non-dog mammals.
+\end{exmpl}
+
+\begin{dfn}[label={def:conditionalInverse}]{Inverse of a Conditional Statememt}{dfnConditionalInverse}
+    The \emph{inverse} of a conditional statement $p \to q$ is the statement $\lnot p \to \lnot q$. This is in effect the converse of the contrapositive of $p \to q$ and as such
+    $$p \to q \not \equiv \lnot p \to \lnot q$$
+    but
+    $$\lnot p \to \lnot q \equiv q \to p$$
+    That is to say, the inverse and the converse are logically equivalent.
+\end{dfn}
+
+\begin{exmpl}[label={exmpl:conditionalInverse}]{Inverse of a Conditional Statement}{xmplConditionalInverse}
+    Let's take a look at the inverse using the same example as above. If $p$: "It is a dog" and $q$: "It is a mammal", then the inverse $\lnot p \to \lnot q"$ would be "If it is not a dog, then it is not a mammal". Again, this is false since there a a lot of examples on mammals that are not dogs.
+\end{exmpl}
+
+\section{Biconditional Statements}
+We have seen above that a statement and its converse are not logically equivalent, that doesn't, however, mean they can't both be true. This gives us a \emph{biconditional} statement.
+
+\begin{dfn}[label={def:biconditional}]{Biconditional Statement}{dfnBiconditional}
+    A \emph{biconditional statement} $p \iff q$ is a statement such that $p \to q$ is true, and $q \to p$ is also true. This is usually read as \begin{center}
+        $p$ is true \emph{if and only if} $q$ is true
+    \end{center}
+\end{dfn}
+
+Let's take a look at an example
+
+\begin{exmpl}[label={exmpl:biconditional}]{Biconditional Statement}{xmplBiconditional}
+    Let's use an example from earlier "If I study hard, then I will pass". This is the statement $p \to q$. The statement $q \to p$ would be "If I pass, then I studied hard". Both of these statements can be true at the same time, so we can say "I will pass if and only i, I study hard", this is the statement $p \iff q$.\\
+
+    We can also write this as "If I study hard, then I will pass \textbf{AND} if I pass, then I studied hard". This "and" indicates we could write this statement in the following way
+    $$ (\lnot p \lor q ) \land (\lnot q \lor p)$$
+\end{exmpl}
