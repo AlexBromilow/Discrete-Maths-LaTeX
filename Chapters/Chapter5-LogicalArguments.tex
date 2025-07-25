@@ -1,0 +1,187 @@
+\chapter{Logical Arguments}
+
+\section{Introduction to Logical Arguments}
+In logic, \emph{arguments} are a list of statements (called \emph{premises}) followed by a conclusion, usually of the form "If $p$ and $q$, then $r$".
+
+\begin{dfn}[label={def:validArguments}]{Valid Arguments}{dfnValidArguments}
+    A \emph{valid argument} is an argument where the conclusion logically follows from the premises, regardless of the truth value of the premises.
+\end{dfn}
+
+\begin{exmpl}[label={exmpl:validArgument}]{A Valid Argument}{xmplValidArgument}
+    Let's take a look at the form a valid argument would take. Our two premises are
+    \begin{center}
+        If I do the dishes, I will feel better\\
+        I do the dishes
+    \end{center}
+    Our conclusion therefore is
+    \begin{center}
+        I feel better
+    \end{center}
+    This argument is \emph{valid} because, if our two premises are true, then the conclusion logically follows
+\end{exmpl}
+
+\begin{exmpl}[label={exmpl:invalidArgument}]{An Invalid Argument}{xmplInvalidArgument}
+    Let's take a look what an \emph{invalid} argument would look like. Our premises are the same as before
+    \begin{center}
+        If I do the dishes, I will feel better\\
+        I do the dishes
+    \end{center}
+    This time our conclusion is
+    \begin{center}
+        The sky is blue
+    \end{center}
+    In this case, the conclusion does not follow from the premises, nothing about us doing the dishes indicates that the sky is blue.
+
+    Note that it doesn't matter if the conclusion is true or not, the argument is invalid because it conclusion doesn't follow from the premises.
+\end{exmpl}
+
+This particluar form of argument actually has a name
+
+\begin{dfn}[label={def:modusPonens}]{Modus Ponens Argument}{dfnModusPonens}
+    A \emph{Modus Ponens} argument is an argument of the form
+    \begin{center}
+        If $p$, then $q$.\\
+        $p$.\\
+        Therefore, $q$.
+    \end{center}
+\end{dfn}
+
+Let's use a truth table to try and get a better appreciation for this style of argument
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \multicolumn{2}{|c|}{Variables} & \multicolumn{2}{|c|}{Premises} & Conclusion             \\
+        \hline
+        $p$                             & $q$                            & $p \to q$  & $p$ & $q$ \\
+        \hline
+        T                               & T                              & T          & T   & T   \\
+        \hline
+        T                               & F                              & F          & T   & N.A \\
+        \hline
+        F                               & T                              & T          & F   & N.A \\
+        \hline
+        F                               & F                              & T          & F   & N.A \\
+        \hline
+    \end{tabular}
+\end{center}
+
+We have put "N.A" in the final 3 rows of the last column for one very important reason - our argument is assuming that both premises are true and this only occurs in the top row so this is the only one we care about evaluating.\\
+
+Another important form of a logical argument is essentially the contrapositive (\cref{def:contrapositive}) of the Modus Ponens argument
+
+\begin{dfn}[label={def:modusTollens}]{Modus Tollens Argument}{dfnModusTollens}
+    A \emph{Modus Tollens} argument is an argument of the form
+    \begin{center}
+        If $p$, then $q$.\\
+        $\lnot q$.\\
+        Therefore, $\lnot p$.
+    \end{center}
+\end{dfn}
+
+Let's take a look at the truth table for this style of argument as well
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \multicolumn{2}{|c|}{Variables} & \multicolumn{2}{|c|}{Premises} & Conclusion                         \\
+        \hline
+        $p$                             & $q$                            & $p \to q$  & $\lnot q$ & $\lnot p$ \\
+        \hline
+        T                               & T                              & T          & F         & N.A       \\
+        \hline
+        T                               & F                              & F          & T         & N.A       \\
+        \hline
+        F                               & T                              & T          & F         & N.A       \\
+        \hline
+        F                               & F                              & T          & T         & T         \\
+        \hline
+    \end{tabular}
+\end{center}
+
+Similarly to before, we only want to evaluate when both of our premises are true, in this case that is the final row. When both our premises are true, $p$ is false and therefore our conclusion, $\lnot p$ is true, as required.
+
+Let's look at an example of a Modus Tollens argument
+
+\begin{exmpl}[label={exmpl:modusTollens}]{Modus Tollens Argument}{xmplModusTollens}
+    Let's evaluate the following argument
+    \begin{center}
+        If I am the POTUS then I'm an American citizen.\\
+        I am not an American citizen.\\
+        Therefore, I am not the POTUS.
+    \end{center}
+    Here we have $p$:"I am the POTUS" and $q$:"I'm an American citizen". This is an argument of the form
+    $$p \to q$$
+    $$\lnot q$$
+    $$\text{therefore } \lnot p$$
+\end{exmpl}
+
+\begin{dfn}[label={def:generalization}]{Generalization}{dfnGeneralization}
+    A \emph{generalization} is an argument of the form
+    $$p.$$
+    $$\text{Therefore } p \lor q.$$
+\end{dfn}
+
+\begin{exmpl}[label={exmpl:generalization}]{Generalization}{xmplGeneralization}
+    An example of a \emph{generalization} is
+    \begin{center}
+        The sky is blue.\\
+        Therefore, the sky is blue or grass is purple
+    \end{center}
+    Since the sky is blue, our conclusion here is true. It doesn't matter if grass is purple or not.
+\end{exmpl}
+\vspace{1cm}
+
+The opposite of a generalization is called \emph{specialization}.
+
+\begin{dfn}[label={def:specialization}]{Specialization}{dfnSpecialization}
+    A \emph{specialization} is an argument of the form
+    $$p \land q$$
+    $$\text{Therefore } p$$
+\end{dfn}
+
+\begin{exmpl}[label={exmpl:specialization}]{Specialization}{xmplSpecialization}
+    An example of a \emph{specialization} is
+    \begin{center}
+        The sky is blue and grass is green.\\
+        Therefore, the sky is blue.
+    \end{center}
+    Since both of the conditions in our premis are true, then we can pull one of them out and say that is definitely true.
+\end{exmpl}
+\newpage
+
+One final, but very important, form of an argument is a \emph{contradiction}, not to be confused with \Cref{def:contradiction}.
+
+\begin{dfn}[label={def:contradictionArgument}]{Contradiction (Argument)}{dfnContradictionArgument}
+    A \emph{contradiction} is an argument of the form
+    $$\lnot p \to c$$
+    $$\text{Therefore } p$$
+    Where $c$ is the contradiction from \cref{def:contradiction}. In plain English this argument says "Assume $p$ is false, this leads to a contradiction. Therefore $p$ must be true".
+\end{dfn}
+\vspace{1cm}
+We shall look at an example of this later on.
+
+\section{Analyzing an Argument for Validity}
+Let's take a look at an argument and try analyzing it to see if the argument is valid.
+
+\begin{exmpl}[label={exmpl:argumentValidity}]{Analysing an Argument for Validity}{xmplArgumentValidity}
+    Let's look at the following argument\\
+    \begin{center}
+        If I'm skilled at poker, then I will win.\\
+
+        I won money playing poker.\\
+
+        Therefore, I'm skilled at poker
+    \end{center}
+    The first premise is of the form $p \to q$ where $p$: \emph{I'm skilled at poker} and $q$:\emph{I will win}.
+
+    Using these statements, the full format of the argument is \\
+    \begin{center}
+        $p \to q$\\
+        $q$\\
+        Therefore $p$
+    \end{center}
+
+    This is not a valid argument form. There could be other reasons I won money at poker other than being skilled - it could have just been pure luck, or the other players may have been even worse at poker.\\
+
+    This argument would be valid if the first premise instead was "\emph{If I win, then I am skilled at poker}".
+\end{exmpl}
