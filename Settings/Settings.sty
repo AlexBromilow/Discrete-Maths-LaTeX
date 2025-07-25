@@ -29,8 +29,17 @@
    before upper=\setlength{\parskip}{0.5\baselineskip}
    }{example}
 
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
+\newtcbtheorem[number within=chapter,list inside={theorem}]{theorem}{Theorem}{colback=red!5!white,
+   colframe=red!75!black,
+   list entry={\thetcbcounter: #2},
+   before upper=\setlength{\parskip}{0.5\baselineskip}
+   }{theorem}
+
+\newtcbtheorem[number within=theorem,list inside={theorem}]{corollary}{Corollary}{colback=green!5!white,
+   colframe=green!75!black,
+   list entry={\thetcbcounter: #2},
+   before upper=\setlength{\parskip}{0.5\baselineskip}
+   }{corollary}
 
 \newgeometry{
     top=0.75in,
@@ -44,3 +53,9 @@
 
 \crefname{tcb@cnt@exmpl}{example}{examples}
 \Crefname{tcb@cnt@exmpl}{Example}{Examples}
+
+\crefname{tcb@cnt@theorem}{theorem}{theorems}
+\Crefname{tcb@cnt@theorem}{Theorem}{Theorems}
+
+\crefname{tcb@cnt@corollary}{corollary}{corollaries}
+\Crefname{tcb@cnt@corollary}{Corollary}{Corollaries}

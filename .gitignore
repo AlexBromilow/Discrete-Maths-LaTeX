@@ -20,3 +20,5 @@
 *.fls
 *.synctex.gz
 *.exmpls
+
+*.theorem
