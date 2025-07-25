@@ -39,9 +39,9 @@ It is also possible to create new statements from old ones, but to do this we're
 Using these three logic symbols, we can construct and analyse statements of varying length and complexity. Let's take a look at an example
 
 \begin{exmpl}[label={exmpl:logicGrayShirt}]{Shirts and Shorts}{xmpllogicGrayShirt}
-    Let's analyse the statement ``My shirt is gray but my shorts are not". The first step is to identify the smaller statements that make up this larger one, i.e. the statements ``My shirt is gray" and the statement ``my shorts are not".\\
+    Let's analyse the statement ``My shirt is gray but my shorts are not". The first step is to identify the smaller statements that make up this larger one, i.e. the statements ``My shirt is gray" and the statement ``my shorts are not".
 
-    Let's define $p:$``my shirt is gray" and $q:$``my shorts are gray". We haven't included the ``not" in the second statment on purpose, let's see how this analysis goes having $q$ be the positive statement.\\
+    Let's define $p:$``my shirt is gray" and $q:$``my shorts are gray". We haven't included the ``not" in the second statment on purpose, let's see how this analysis goes having $q$ be the positive statement.
 
     If we want to combine these two statements back to make the orginal statement, but using our new logic symbols instead, we can write this as
     $$ p \land \lnot q$$
@@ -50,7 +50,7 @@ Using these three logic symbols, we can construct and analyse statements of vary
 \end{exmpl}
 
 \section{Truth Tables}
-In the above example, we were able to work out what statements were true and which were false relatively quickly, but more complicated statements require a more robust method of working out which statements are true and which aren't. This is where \emph{truth tables} come in.\\
+In the above example, we were able to work out what statements were true and which were false relatively quickly, but more complicated statements require a more robust method of working out which statements are true and which aren't. This is where \emph{truth tables} come in.
 
 The way truth tables work is, you have a column for each fundamental statement ( such as $p$ or $q$) and a column for each complex statement (such as $p \land q$), and in each row you put whether your fundamental statements are true or false, and then what that means for the complex statements. Let's try and example
 
@@ -116,7 +116,7 @@ Let's take a look at another example, this time we'll look at conjunction, i.e. 
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
+
     Now we can use our definition for conjunction, \cref{def:logicAnd}, to fill in the rest of the table:
     \begin{center}
         \begin{tabular}{|c|c|c|}
@@ -133,7 +133,7 @@ Let's take a look at another example, this time we'll look at conjunction, i.e. 
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
+
     Since $\land$ requires both inputs to be true, the truth table for conjunction returns false in all other instances
 \end{exmpl}
 
@@ -156,7 +156,7 @@ Lets also look at the truth table for disjunction, i.e. statements like $p \lor 
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
+
     Now we can use our definition for disjunction, \cref{def:logicOr}, to fill in the rest of the table: \begin{center}
         \begin{tabular}{|c|c|c|}
             \hline
@@ -172,7 +172,7 @@ Lets also look at the truth table for disjunction, i.e. statements like $p \lor 
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
+
     Since $\lor$ only requires one input to be true, the truth table for disjunction returns true in all instances except where both inputs are false.
 \end{exmpl}
 
@@ -181,6 +181,7 @@ Now let's look at one final example, the truth table for the statement $\lnot p 
 
 \begin{exmpl}[label={exmpl:truthTableNPOQ}]{$\lnot p \lor \lnot q$ Truth Table}{xmpltruthTableNPOQ}
     Lets start by adding in all the table headers we're going to need and the truth value for out fundamental statements. In this example we have our two fundamental statements, $p$ and $q$, but we also have the statements $\lnot p$ and $\lnot q$, and then finally we have $\lnot p \lor \lnot q$:
+
     \begin{center}
         \begin{tabular}{|c|c|c|c|c|}
             \hline
@@ -196,7 +197,7 @@ Now let's look at one final example, the truth table for the statement $\lnot p 
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
+
     Now let's first handle the two negation columns and fill those in based on our negation table, \cref{exmpl:truthTableNegation}
     \begin{center}
         \begin{tabular}{|c|c|c|c|c|}
@@ -213,7 +214,6 @@ Now let's look at one final example, the truth table for the statement $\lnot p 
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
 
     Finally, let's use the values of $\lnot p$ and $\lnot q$ as the inputs for our disjunction table, \cref{exmpl:truthTableDisjunction}, giving our final output:
 
@@ -232,7 +232,6 @@ Now let's look at one final example, the truth table for the statement $\lnot p 
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
 
     Notice anything about this final column? It is the exact opposite (the \emph{negation}) of our conjunction ($\land$) table:
     \begin{center}
@@ -250,7 +249,7 @@ Now let's look at one final example, the truth table for the statement $\lnot p 
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
+
     This shows that $\lnot (p \land q)$ is \emph{logically equivalent} to $\lnot p \lor \lnot q$.
 \end{exmpl}
 
@@ -278,7 +277,7 @@ Let's look at a simple example to understand what this means
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
+
     Now lets fill in our $\lnot p$ column:
     \begin{center}
         \begin{tabular}{|c|c|c|}
@@ -291,7 +290,7 @@ Let's look at a simple example to understand what this means
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
+
     Finally lets fill in our $\lnot (\lnot p)$ column:
     \begin{center}
         \begin{tabular}{|c|c|c|}
@@ -304,7 +303,7 @@ Let's look at a simple example to understand what this means
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
+
     The columns for $p$ and $\lnot(\lnot p)$ are indentical, therefore they are logically equivalent, $p \equiv \lnot(\lnot p)$.
 \end{exmpl}
 
@@ -330,7 +329,7 @@ Let's look at an example of a truth table when we use a tautology
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
+
     So using or ($\lor$) with a tautology gives another tautology.
 \end{exmpl}
 
@@ -355,7 +354,7 @@ Let's look at an example of a truth table when we use a contradiction
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
+
     So using and ($\land$) with a contradiction gives another contradiction.
 \end{exmpl}
 
@@ -444,7 +443,6 @@ Let's see how we can combine this with our current understanding of logic by see
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
 
     Now how do we fill in the final column? \Cref{def:conditionalStatements} says that if $p$ is true, then $q$ must be true, therefore the statement is true in the first row since both $p$ and $q$ are true.\\
 
@@ -467,8 +465,9 @@ Let's see how we can combine this with our current understanding of logic by see
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
+
     Let's add two new columns to the table to better explain this
+
     \begin{center}
         \begin{tabular}{|c|c|c|c|c|}
             \hline
@@ -484,7 +483,7 @@ Let's see how we can combine this with our current understanding of logic by see
             \hline
         \end{tabular}
     \end{center}
-    \vspace{0.5cm}
+
     These extra two columns give a better understanding of why the two bottom rows of our original table evaluate to true. The last column is another way of phrasing our conditional statement. Rather than saying ``if $p$ is true, then $q$ is true" what we're saying is ``either $p$ is false, or $p$ is true". Take a moment to re-read this and convince yourself these are the same thing.\\
 
     Consider the statement ``if I study hard, then I will pass". We can say that $p$: ``I study hard" and $q$:``I will pass". Using these we can rewrite the previous statement as
@@ -613,7 +612,7 @@ We have seen above that a statement and its converse are not logically equivalen
 Let's take a look at an example
 
 \begin{exmpl}[label={exmpl:biconditional}]{Biconditional Statement}{xmplBiconditional}
-    Let's use an example from earlier ``If I study hard, then I will pass". This is the statement $p \to q$. The statement $q \to p$ would be ``If I pass, then I studied hard". Both of these statements can be true at the same time, so we can say ``I will pass if and only i, I study hard", this is the statement $p \iff q$.\\
+    Let's use an example from earlier ``If I study hard, then I will pass". This is the statement $p \to q$. The statement $q \to p$ would be ``If I pass, then I studied hard". Both of these statements can be true at the same time, so we can say ``I will pass if and only i, I study hard", this is the statement $p \iff q$.
 
     We can also write this as ``If I study hard, then I will pass \textbf{AND} if I pass, then I studied hard". This ``and" indicates we could write this statement in the following way
     $$ (\lnot p \lor q ) \land (\lnot q \lor p)$$

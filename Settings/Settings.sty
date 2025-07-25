@@ -20,11 +20,13 @@
 \newtcbtheorem[number within=chapter,list inside={dfn}]{dfn}{Definition}{colback=blue!5!white,
    colframe=black!50,
    list entry={\thetcbcounter: #2},
+   before upper=\setlength{\parskip}{0.5\baselineskip}
    }{definition}
 
 \newtcbtheorem[number within=chapter,list inside={exmpls}]{exmpl}{Example}{colback=blue!5!white,
    colframe=blue!75!black,
    list entry={\thetcbcounter: #2},
+   before upper=\setlength{\parskip}{0.5\baselineskip}
    }{example}
 
 \newtheorem{theorem}{Theorem}[section]
