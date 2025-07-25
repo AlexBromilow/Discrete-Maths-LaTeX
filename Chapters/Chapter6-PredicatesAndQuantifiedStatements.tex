@@ -1,0 +1,274 @@
+\chapter{Predicates and Quantified Statements}
+
+\section{Predicates and their Truth Sets}
+Recall previously we defined a statement as something that could be eaither \emph{true} or \emph{false} (\cref{def:statements}). This is obvious for statements such as $7 > 5$ or $3 > 5$ - these are true and false respectively.
+
+How do we evaluate the truth value of a statement containing a variable, such as $x > 5$? This doesn't fit out definition of a statement since its truth value is dependant on tha value of $x$ - we call this a \emph{predicate}
+
+\begin{dfn}[label={def:predicate}]{Predicate}{dfnPredicate}
+    A \emph{predicate} is a sentence depending on variables which becomes a statement upon substituting values in the domain.
+\end{dfn}
+
+Let's look at en example to get a better idea of what this definition is saying
+
+\begin{exmpl}[label={exmpl:predicate}]{Predicate}{xmplPredicate}
+    Consider the following
+    $$P(x): x \text{ is a factor of } 12 \text{ within domain } \Z^+ $$
+    In English this says ``$x$ is a positive integer that is a factor of 12''.
+
+    The domain, $\Z^+$ is a key part of a predicate, we need to know what possible values our variable(s) could take in order to evaluate the truth value of the statements when we subtitute them in.
+
+    Let's say that $x = 6$, $6 \in \Z^+$ and $12 \div 6 = 2$. Since $6$ is in out domain and it satisfies the condition of being a factor of 12, we can say that $P(6)$ is \emph{true}.
+
+    If we say $x = 5$, $5 \in \Z^+$ but 5 is not a factor of 12. Since 5 does not satisfy the condition of being a factor of 12, we can say that $P(5)$ is \emph{false}.
+
+    Similarly if we say $x = \frac{1}{3}$, $\frac{1}{3} \notin \Z^+$ therefore $P(\frac{1}{3})$ is \emph{invalid}.
+\end{exmpl}
+\newpage
+\begin{dfn}[label={def:truthSet}]{Truth Set}{dfnTruthSet}
+    The \emph{Truth Set} of a predicate $P(x)$ over domain $D$ is
+    $$\{x \in D | P(x)\}$$
+    i.e. all values $x$ in the domain $D$ where $P(x)$ is true.
+\end{dfn}
+\begin{exmpl}[label={exmpl:truthSet}]{Truth Set}{xmplTruthSet}
+    Using the same example as above
+    $$P(x): x \text{ is a factor of } 12 \text{ within domain } \Z^+ $$
+    The set of all positive integers that are factors of 12 is
+    $$TS=\{1, 2,3,4,6,12 \}$$
+    notice we have $TS \subseteq \Z^+$.
+\end{exmpl}
+
+\section{Universal and Existential Quantifiers}
+We have used a lot of symbols and notation so far in this course, let's now take a look at 2 more symbols that are used in logical arguments, the \emph{universal} and \emph{existential} quantifiers.
+
+\begin{dfn}[label={def:universalQuantifier}]{Universal Quantifier}{dfnUniversalQuantifier}
+    The \emph{Universal Quantifier}, $\forall$, is read as ``for all'' and means all elements of a domain that satisfy a condition. E.g. $\forall x \in \R$ means ``for all real numbers''.
+\end{dfn}
+The main use of this quatifier is, unsurprisingly, to quantify predicates. That is, to state for which values of $x$ it is true. For example,
+$$\forall x \in D, P(x)$$
+means ``for all values of $x$ in the domain $D$, $P(x)$ is true''. Notice how much quicker it is to write this out using the quantifier.
+
+\begin{exmpl}[label={exmpl:universalQuantifier}]{Universal Quantifier}{xmplUniversalQuantifier}
+    Let's see how we can use this quantifier with our example from earlier
+
+    \begin{center}
+        Every dog is a mammal
+    \end{center}
+
+    The first thing to notice is the use of the word ``every''. If you see this in a written statement, it is the same as using ``for all''.
+
+    Now let's call $D$ the set of all dogs, so for a single dog we would say $x \in D$.
+
+    Finally let's say we have a predicate $P(x)$ such that $P(x): x$ is a mammal.
+
+    Using this we can rewrite the above statement as
+    $$\forall x \in D, P(x)$$
+\end{exmpl}
+
+Now let's take a look at the other quantifier we mentioned above
+
+\begin{dfn}[label={def:existentialQuantifier}]{Existential Quantifier}{dfnExistentialQuantifier}
+    The \emph{Existential Quantifier}, $\exists$, is read as ``there exists'' and means there is at least one element in a domain that satisfies a condition. E.g. $\exists x \in \R$ means ``there exists at least one real number''.
+\end{dfn}
+
+Similarly to the universal quantifier, the main use of this quatifier is to quantify predicates. For example,
+$$\exists x \in D, P(x)$$
+means ``there exists at least one $x$ in the domain $D$ such that $P(x)$ is true''. Let's look at an example.
+
+\begin{exmpl}[label={exmpl:existentialQuantifier}]{Existential Quantifier}{xmplExistentialQuantifier}
+    Let's see how we can use this quantifier with the following statement
+
+    \begin{center}
+        Some person is the oldest in the world
+    \end{center}
+
+    The first thing to notice is the use of the word ``some''. If you see this in a written statement, it is the same as using ``there exists''.
+
+    Now let's call $D$ the set of all people in the world, so for a single person we would say $x \in D$.
+
+    Finally let's say we have a predicate $P(x)$ such that $P(x): x$ is the oldest.
+
+    Using this we can rewrite the above statement as
+    $$\exists x \in D, P(x)$$
+\end{exmpl}
+
+It is important to remember the difference between a \emph{statement} (\cref{def:statement}) and a \emph{predicate}(\cref{def:predicate}), and the difference in notation:
+\begin{itemize}
+    \item \textbf{Statement:} $P:$ Spot is a mammal - this is looking at a specific dog, menaing this is either true or false, therefore it is a statements
+    \item \textbf{Predicate} $P(x):$ $x$ is a mammal - the truth of this depends on $x$, therefore it is a predicate
+    \item \textbf{Quantifier}: $Q:\forall x \in D, P(x):$ Every dog is a mammal - putting a quantifier infront of a predicate turns it into a statement.
+\end{itemize}
+
+\section{Negating Universal and Existential Quantifiers}
+Consider the following statement
+$$P: \forall x \in \Z^+, x  > 3$$
+This is saying ``for all positive integers $x$, $x$ is greater than 3''. We know this statement is false, for integers 1 and 2 are both smaller than 3. If we wanted to make this statement true, we would need to negate it (\cref{def:logicNot}), but how do we do this with a statement made from quantifying a predicate?
+
+We have actually already taken the first step for this, we have argued in English why this statement is false, i.e. we have some positive integers that are not greater than 3. We can now write out that argument using a quantifier and a predicate:
+$$\exists x \in \Z^+, x \not > 3$$
+
+This means that if we have some statement of the form
+$$P: \forall x \in D, P(x)$$
+then the negation of this is
+$$\lnot \left(\forall x \in D, P(x)\right) \equiv \exists x \in D, \lnot P(x)$$
+This is what's known as finding a \emph{counter example}, i.e. finding at least one example where the statement is false.
+
+Now let's take a look at negating the existential quantifier. Consider the following statement:
+\begin{center}
+    Someone in our class is taller than 7 feet
+\end{center}
+We can write this as
+$$P: \exists x \text{ in our class }, x \text{ is taller than 7 feet.}$$
+
+Let's analyse this the same way we did in our previous example, if we're negating the above statement then what we're saying is that \emph{everyone} in our class is shorter than 7 feet.
+
+Recall in \cref{exmpl:universalQuantifier} we said that terms like ``everyone'' indicate we should use the universal quantifier. So we can write this as
+$$\forall x \text{ in our class }, x \text{ is shorter than 7 feet.}$$
+In other words we're saying that
+$$\lnot \left(\exists x \in D, P(x)\right) \equiv \forall x \in D, \lnot P(x)$$
+
+\section{Negating Logical Statements with Multiple Quantifiers}
+Consider the following statement
+\begin{center}
+    Every integer has a larger integer
+\end{center}
+
+If we want to rewrite this to use our quantifiers and predicates, we need to first re-word it a little. First note that the word ``every'' at the start is an indicator we should be using ``for all''.
+
+Now how do we re-write the phrase ``has a larger integer''? The way to read this would be ``there exists some other integer which is larger'' - this shows us how we can rewrite the statement.
+
+This statement is saying ``for all integers, there exists some other integer larger than it''. We can write this using quantifiers and predicates like so
+$$\forall x \in \Z, \exists y \in \Z , y > x$$
+here we can consider $P(x): \exists y \in \Z, y > x$.
+
+This statement is easy enough to show is true, for any integer we can just add 1 to it and get an integer which is bigger. e.g. $101 > 100$, $10000001 > 10000000$ etc.
+
+Since we know this statement is true, how would we go about negating it? Let's recall that we said
+
+$$\lnot \left(\forall x \in D, P(x)\right) \equiv \exists x \in D, \lnot P(x)$$
+so in this case we can say that
+
+$$\lnot \left(\forall x \in \Z, \exists y \in \Z , y > x\right) \equiv \exists x \in \Z, \lnot P(x)$$
+
+where $P(x): \exists y \in \Z , y > x$. So now we're left with the following question, what is $\lnot P(x)$? This would be the negation of the statement $P(x): \exists y \in \Z , y > x$.
+
+\newpage
+We saw previously that
+
+$$\lnot \left(\exists x \in D, P(x)\right) \equiv \forall x \in D, \lnot P(x)$$
+
+and so we know that
+
+$$\lnot \left(\exists y \in \Z , y > x\right) \equiv \forall y \in \Z, y \leq x$$
+
+if we put these two together we get
+
+$$\lnot \left(\forall x \in \Z, \exists y \in \Z , y > x\right) \equiv \exists x \in \Z, \forall y \in \Z, y \leq x$$
+
+In other words, the negation of our original statement is
+\begin{center}
+    \emph{There exists some integer $x$ such that, for all other integers $y$, $y$ is less than or equal to $x$.}
+\end{center}
+In other words, there exists some integer such that all other integers are less than or equal to it.
+
+This new statement is false, there is no \emph{largest integer} - this is a good thing since we believed our original statement was true and then negated it.
+
+Let's try another one, consider the following statement
+\begin{center}
+    Some number in $D$ is the largest
+\end{center}
+
+The truth value of this statement depends on what the set $D$ is, but we can still write this out using quantifiers and predicates to try and analyse it.
+
+The use of ``some'' at the start indicates we should be using the existential quantifier, so we have
+$$\exists x \in D, P(x)$$
+where $P(x):$ is the largest. We can rewrite ``is the largest'' as ``all other numbers are smaller or equal to it'', which gives us
+$$P(x): \forall y \in D, y \leq x$$
+putting these together we get
+$$\exists x \in D, \forall y \in D, y \leq x$$
+Now let's suppose we want to negate this. Using the same method as our previous example, we know that negating just entailes switching universal and existential quantifiers until we get to the final predicate which we then negate. This means that
+$$\lnot \left(\exists x \in D, \forall y \in D, y \leq x\right) \equiv \forall x \in D, \exists y \in D, y > x$$
+In other words, the negation of the statement `` Some number in $D$ is the largest'' is the statement ``For all numbers in $D$, there is another number also in $D$ that is bigger than it''.
+
+This example is precisely the opposite of the previous and as you can see, the negation of the second statement is precisely the statement of the first example and vice versa, as is expected if you negate a negation.
+
+\section{Universal Conditionals}
+Now that we have an understanding of predicates and quantifiers, how do these factor in to our earlier discussions about conditional statements and arguments? This introduces us to the concept of \emph{universal-conditionals}.
+
+\begin{dfn}[label={def:universalConditional}]{Universal-Conditional}{dfnUniversalConditional}
+    A \emph{universal-conditional} is a statement $P(x) \implies Q(x)$, read as ``$P(x)$ \emph{implies} $Q(x)$'' which means $\forall x \in D, P(x) \to Q(x)$.
+\end{dfn}
+
+Let's take a look at an example
+
+\begin{exmpl}[label={exmpl:universalConditional}]{Universal-Conditional}{xmplUniversalConditional}
+    Consider the statement
+    \begin{center}
+        if $x$ is the POTUS, then $x$ is a US citizen
+    \end{center}
+    This statement contains two predicates, $P(x)$: $x$ is the POTUS, and $Q(x):$ $x$ is a US citizen.
+
+    Note that while it is no explicitly stated, starting the statement off with ``if $x$ is the POTUS'' can be rewritten as ``for all people, if they are the POTUS'', so if we define $D$ as the set of all people, what we're saying here is
+    $$\forall x \in D, P(x) \to Q(x)$$
+    where $P(x) \to Q(x)$ is a conditional from \cref{def:conditionalStatements}.
+
+    This means we can rewrite this statement as
+    \begin{center}
+        $x$ is the POTUS \emph{implies} $x$ is a US citizen.
+    \end{center}
+    or in more natural language
+    \begin{center}
+        Every POTUS is a US citizen.
+    \end{center}
+\end{exmpl}
+
+\section{Necessary and Sufficient Conditions}
+In this section we're going to look at the concepts of \emph{necessary} and \emph{sufficient} conditions and what those terms mean in a mathematical sense.
+
+Let's first consider the following three sets: $S$: The set of all squares, $R$: The set of all rectangles, and $Q$: the set of all quadrilaterals (where a quadrilateral is any 4 sides shape that doesn't fit into squares or rectangles, e.g. a rhombus).
+
+Now imagine we were handed some 4-sided shape and we wanted to deduce if the shape was a square, a rectangle or some other quadrilateral. Let's first focus on squares and rectangles. We can state the following relationship between these two sets
+\begin{center}
+    All squares are rectangles, therefore if $x$ is a square, then $x$ is a rectangle.
+\end{center}
+
+If we wanted to generalise this, we could say
+\begin{center}
+    If $A(x)$, then $B(x)$
+\end{center}
+At this point we can say that, as long as we have $A(x)$ then we have $B(x)$, i.e. having $A(x)$ is \emph{sufficent} to say we have $B(x)$.
+
+\begin{dfn}[label={def:sufficentCondition}]{Sufficient Condition}{dfnSufficientCondition}
+    If we have the statement $A(x) \implies B(x)$ then we say that $A(x)$ is a \emph{sufficient condition} for $B(x)$.
+\end{dfn}
+
+Now let's consider rectangles and quadrilaterals. We can state the following relationship between these two sets
+\begin{center}
+    All rectangles are quadrilaterals, therefore if $x$ is a rectangles, then $x$ is a quadrilaterals.
+\end{center}
+
+If we wanted to generalise this, we could say
+\begin{center}
+    If $B(x)$, then $C(x)$
+\end{center}
+
+Let's now consider the contrapositive (\cref{def:contrapositive}) of the above statement:
+\begin{center}
+    If $x$ is \emph{not} a quadrilateral, then it is \emph{not} a rectangle
+\end{center}
+
+The generalised form of this is
+\begin{center}
+    If $\lnot C(x)$, then $\lnot B(x)$
+\end{center}
+
+We can think of this as saying that for $x$ to be a rectangle, it is \emph{necessary} for it to also be a quadrilateral
+
+\begin{dfn}[label={def:sufficentCondition}]{Necessary Condition}{dfnNecessaryCondition}
+    If we have the statement $B(x) \implies C(x)$ then we say that $C(x)$ is a \emph{necessary condition} for $B(x)$.
+\end{dfn}
+
+So in our example, if we wanted to say that the shape we were given is a \emph{rectangle} then it is \emph{sufficient} to say we have a square, and it is \emph{necessary} to say we have a quadrilateral.
+
+The generalised form of this would be
+$$A(x) \implies B(x) \implies C(x)$$
