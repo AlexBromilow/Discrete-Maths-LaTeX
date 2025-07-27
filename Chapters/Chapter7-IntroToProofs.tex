@@ -1,0 +1,209 @@
+\chapter{Introduction to Proofs}
+In this chapter, we're going to look at something we haven't seen before, and we're going to try and define, \emph{rigourously}, the even and odd integers.
+
+Being able to rigourously prove theorems and concepts is crucial to a solid foundation of mathematics, it allows us to make absolute statements about incredibly complex concepts.
+
+\section{Defining Odd and Even Integers}
+Let's first look at an informal definition of an even integer:
+
+\begin{center}
+    A number $n$ is an even integer if $n$ can be written as twice an integer.
+\end{center}
+In this informal definition, there is a hidden existential condition, we are saying that $n$ is even if there is some other integer $k$ such that $n$ is twice $k$. This allows us to create the formal definition below:
+
+\begin{dfn}[label={def:evenInteger}]{Even Integer}{dfnEvenInteger}
+    $n \in \Z$ is \emph{even} if $\exists k \in \Z, n = 2k$.
+\end{dfn}
+This is an incredibly useful definition for one major reason, we now have an equation that defines the even integers, $n = 2k$. Now if we're every doing a proof that requires us to consider even integers, we can substitute in this $2k$ and consider all integers for $k$ instead. We will see later how this can be helpful.
+
+Now let's consider the odd integers, the informal definition for these could be
+\begin{center}
+    A number $n$ is an odd integer if $n$ is an integer that is not even.
+\end{center}
+If we want to be more formal with this definition, it is useful to consider an integer like 7. 7 is one greater than 6, and 6 is even by our previous definition ($6 = 2k$ where $k = 3$). This is true for all odd integers, they are one greater than an even integer.
+
+This means we can define the odd integers as follows:
+\begin{dfn}[label={def:oddInteger}]{Odd Integer}{dfnOddInteger}
+    $n \in \Z$ is \emph{odd} if $\exists k \in \Z, n = 2k + 1$.
+\end{dfn}
+
+Similarly as above, having this equation for odd integers, $n = 2k + 1$ is incredibly useful in proofs. In the next section we will put this into practice.
+
+\section{How to Prove Math Theorems}
+Let's take our first look at a theorem and how we would go about proving it.
+
+\begin{theorem}[label={theorem:oddPlusEven}]{Sum of Odd and Even Integers}{theoOddPlusEven}
+    An even integer plus an odd integer is another odd integer.
+\end{theorem}
+This may seem like a pretty obivous theorem, something we all learnt when we were children, but can we be completely sure that this theorem is true in \emph{all} circumstances? In fact we can, but only once we have a proof.
+
+A proof is a formal, direct way to convince ourselves and others that a statement, theorem or equation is true in all circumstances we have defined. Let's look t putting together the basic scaffold we'll use in proofs going forward.
+
+The first part of any proof is making sure we know exactly what we're trying to prove, using concrete definitions. Here we are using the definitions we created in the last section, \cref{def:evenInteger,def:oddInteger}.
+
+Our next step is to define our assumptions. We can consider \cref{theorem:oddPlusEven} as a statement written in the form ``if $p$ then $q$'' if we write it as
+\begin{center}
+    If $m \in \Z$ is even and $n \in \Z$ is odd, then $m + n \in \Z$ is odd.
+\end{center}
+
+Saying that $m$ is even and $n$ is odd is still a little vauge, thankfully we have some concrete definitions of what being even or odd means, so we can use those and say
+$$\exists k_1 \in \Z, m = 2k_1 $$
+$$\exists k_2 \in \Z, n = 2k_2 + 1$$
+Note that we use $k_1$ and $k_2$ here to show that $m$ and $n$ can be \emph{any} even or odd integer, they don't have to be consecutive.
+
+Now that we have these equations, we can use them to evaluate out theorem by substituting our definitions for $m$ and $n$ into the equation $m + n$ and see what we get.
+
+If we subtitute these in we get
+$$m + n = (2k_1) + (2k_2 + 1)$$
+We can then rewrite this to be
+$$m + n = 2(k_1+k_2) + 1$$
+This is now in the form $2k_3 + 1$ where $k_3 = k_1 + k_2$. Due to the definition of the integers, we can say that $k_3 = k_1 + k_2$ is itself an integer, therefore $m + n$ is in the form of 2 times an integer, plus one.
+
+This is precisely our definition of an odd integer, so we can say that $m + n$ where $m$ is an even integer and $n$ is an odd integer, is itself an odd integer.
+
+This seems quite long winded but if we were writing this out formally it would look like this:
+\newpage
+\begin{proof}
+    Suppose $m$ is even and $n$ is odd. This means $\exists k_1 \in \Z$ and $\exists k_2 \in \Z$ such that $m = 2k_1$ and $n = 2k_2 + 1$ (by \cref{def:evenInteger,def:oddInteger}). Then
+    \begin{align*}
+        m + n & = (2k_1) + (2k_2 + 1) \\
+              & = 2(k_1 + k_2) + 1
+    \end{align*}
+    Let $k_3 = k_1 + k_2$, and note it is an integer by the definition of the integers.
+
+    Hence, $\exists k_3 \in \Z$ such that $m + n = 2k_3 + 1$. This $m + n$ is odd by \cref{def:oddInteger}.
+\end{proof}
+
+The $\qedsymbol$ (QED) is a symbol added at the end of a proof to indicate we have shown what we needed to for the proof.
+
+The standard format of a direct proof is as follows:
+\begin{enumerate}
+    \item \emph{Assumptions} - in our example, this is that $m$ and $n$ are an even and odd integer respectively.
+    \item \emph{Definition of Assumptions} - this is rewriting our assumptions in a way that is useful for the proof. In our example this is when we used \cref{def:evenInteger,def:oddInteger} to rewrite our assumptions.
+    \item \emph{Manipulation} - this is where we use the definitions of the assumptions and manipulate them to reach the desired outcome. In our example this is where we used substitution and algebra to rewrite $m + n$ in terms of $k_1$ and $k_2$.
+    \item \emph{Definition of Conclusion} - this is where we use our already established definitions and the results of our manipulation to show our conclusion matches the definition we want. In our example this is where we stated that $m + n = 2k_3 + 1$.
+    \item \emph{Conclusion} - this is where we state what we were trying to prove. In our example this is where we stated that by \cref{def:oddInteger}, $m + n$ is odd.
+\end{enumerate}
+
+Note that this structure is for \emph{direct proofs}, that is when trying to prove a theorem of the form $\forall x \in D, P(x) \implies Q(x)$.
+
+Let's take a look at another theorem and proof
+
+\begin{theorem}[label={theorem:productOfEvens}]{Product of Two Even Integers}{thmProductOfEvens}
+    An even integer times an even integer is another even integer.
+\end{theorem}
+
+This is another theorem of the form $\forall x \in D, P(x) \implies Q(x)$. In this case we're saying ``for all integers $x$ and $y$, if $x$ and $y$ are both even, then $x \times y$ is also even''. Let's follow each step of our structure and see if we can prove this theorem
+
+\begin{proof}
+    \begin{enumerate}
+        \item \emph{Assumptions} - our assumptions here is that $x$ and $y$ are both even integers.
+        \item \emph{Definition of Assumptions} - using \cref{def:evenInteger} we can say that $\exists k_1 \in \Z$ and $\exists k_2 \in \Z$ such that $x = 2k_1$ and $y = 2k_2$.
+        \item \emph{Manipulation} - now that we have our definitions of assumptions, let's substitue these into our product
+              \begin{align*}
+                  x \times y & = 2k_1 \times 2k_2 \\
+                             & = 4k_1k_2          \\
+                             & = 2(2k_1k_2)
+              \end{align*}
+        \item \emph{Definition of Conclusion} - by the definition of the integers, $k_1k_2$ is also an integer, so we can say $\exists k_3 \in \Z$ such that $k_3 = 2k_1k_2$. Therefore $x \times y = 2k_3$.
+        \item \emph{Conclusion} - Thus, by \cref{def:evenInteger}, $x \times y$ is an even integer.
+    \end{enumerate}
+\end{proof}
+
+\section{Rational Numbers}
+In this section, we're going to use the tools we've developed so far in this chapter to define and prove theorems about the \emph{rational numbers}.
+
+As we did with the odd and even integers, let's firts look at an informal definition of the rational numbers:
+\begin{center}
+    $n$ is a rational number if it can be written as a fraction. E.g. $\frac{3}{7}$.
+\end{center}
+
+This definition is fine for every day use, but if we want to prove theorems about the rational numbers we need something more concrete. In general a rational number is any number that can be written as a fraction of two integers, with the bottom integer being non-zero. In other words we're saying that a number is ration if there \emph{exists} integers that, when you divide one by the other, gives you $n$. This indicates we should be using the existential quantifier in our definition.
+
+Our formal definition for rational numbers is stated below:
+\begin{dfn}[label={def:rationalNumber}]{Rational Number}{dfnRationalNumber}
+    $n$ is a rational number if $\exists p \in \Z$ anf $\exists q \in \Z\setminus\{0\}$ such that
+    $$ n = \frac{p}{q}$$
+\end{dfn}
+Note in this definition that $\Z\setminus\{0\}$ means ``the set of all integers \emph{except} zero''. This ensures our denominator is not zero since dividing by zero is undefined.
+
+Now that we have a definition of the rational numbers, let's look at a theorem and try to prove it using our direct proof structure above.
+
+\begin{theorem}[label={theorem:sumOfRationals}]{Sum of Two Rational Numbers}{thmSumOfRationals}
+    The sum of two rational numbers is another rational number.
+\end{theorem}
+
+First we can rewrite this theorem as ``if $m$ and $n$ are rational numbers, then $m + n$ is a rational number''. This fits our format for using a direct proof, so let's try and prove it using our structure from earlier:
+
+\begin{proof}
+    Let $m$ and $n$ be rational numbers. Therefore $\exists p_1,p_2 \in \Z$ and $\exists q_1,q_2 \in \Z \setminus \{0\}$ such that $m = \frac{p_1}{q_1}$ and $n = \frac{p_2}{q_2}$.
+    Then
+    \begin{align*}
+        m + n & = \frac{p_1}{q_1} + \frac{p_2}{q_2}                                           \\
+              & = \frac{p_1q_2}{q_1q_2} + \frac{p_2q_1}{q_2q_1} \tag*{by cross-multipliation} \\
+              & = \frac{p_1q_2 + p_2q_1}{q_1q_2}                                              \\
+    \end{align*}
+    By the definition of integers we can say $\exists p_3 \in \Z$ and $\exists q_3 \in \Z \setminus \{0\}$ such that $p_3 = p_1q_2 + p_2q_1$ and $q_3 = q_1q_2$.
+
+    Therefore, $m + n  = \frac{p_3}{q_3}$. By \cref{def:rationalNumber}, $m + n$ is rational.
+\end{proof}
+
+\section{Divisibility}
+Similar to the previous section, in this section we're going to look at a formal definition of \emph{divisibility} and then we're going to prove a particular property of divisibility.
+
+Let's start with an informal definition of divisibility. If we had a number, say 12, we could say something like the following: 12 is divisible by 3 because $3 \times 4 = 12$. Conversely we could say 12 is \emph{not} divisible by 5 because there's no integer $k$ such that $5 \times k = 12$.
+
+As we have done previously, let's use the idea from this informal definition to create a formal definition for divisibility
+
+\begin{dfn}[label={def:divisibility}]{Divisibility}{dfnDivisibility}
+    For $n, d \in \Z$, with $d \neq 0$, $n$ is \emph{divisible} by $d$, written as $d | n$, if and only if $\exists k \in \Z$ such that $n = dk$.
+\end{dfn}
+\vspace{0.5cm}
+Now we have a formal definition for divisibility, let's take a look at proving a specific property of divisibility - \emph{transitivity}.
+
+\begin{theorem}[label={theorem:transitiveDivisible}]{Transitivity of Divisibility}{thmTransitiveDivisible}
+    If $a$ is divisible by $b$, and $b$ is divisible by $c$, then $a$ is divisible by $c$.
+\end{theorem}
+\begin{proof}
+    Assume $a,b$ and $c$ are numbers such that $a$ is divisible by $b$ and $b$ is divisible by $c$.
+
+    This means $\exists k_1,k_2 \in \Z$ such that $a = bk_1$ and $b = ck_2$.
+
+    Substituting our equation for $b$ into our equation for $a$ we get
+    $$a = ck_2k_1$$
+    By the definition of the integers, we can say $\exists k_3 \in \Z$ such that $k_3 = k_1k_2$. Therefore
+    $$a = ck_3$$
+    Thus, $a$ is divisible by $c$ by \cref{def:divisibility}
+\end{proof}
+
+\section{Disproving Implications}
+Now that we now how we can prove implications, how about disproving them? Disproving, in theory, is a much easier process, all you have to do is find a \emph{counterexample}.
+
+A counterexample is, as the name suggests, an example that shows there are times an implication doesn't work. Let's work through an example to get an idea for what this means.
+
+\begin{exmpl}[label={exmpl:counterexample}]{Counterexample}{xmplCounterexample}
+    Prove or disprove: For $a,b \in \Z$, $a^2 > b^2 \implies a > b$.
+
+    At first glance we might think this implication is true, but whenever we see $x^2$ we need to remember that both negative and positive numbers produce a positive number when squared. In fact, this is where we can get a counterexample. Let's say $a = -3$ and $b = 2$. If we square both these we get
+    $$a^2  = 9 > 4 = b^2$$
+    so we indeed have $a^2 > b^2$. However in this case, we also have $a < b$. This shows there are values for $a$ and $b$ that fit our assumptions but do not fit our conclusion. This is imporant, for a counterexample to be valid it must fit all the assumptions we have made and then not fit the conlcusion.
+
+    Another imporant thing to notice here is that the theorem we're trying to prove states it is for all integers. The theorem would be true if the domain was restricted to only the positive integers.
+\end{exmpl}
+
+We can explain this a big more rigourously by using \cref{def:universalConditional}, the Universal-Conditional. The statement we're trying to prove or disprove is of the form
+$$P(x) \implies Q(x)$$
+by \cref{def:universalConditional}, we know that this is equivalent to writing
+$$\forall x \in D, P(x) \to Q(x)$$
+If we're trying to disprove a theorem like this, what we want is to show the negation is true, so we want to show
+$$\lnot \left(\forall x \in D, P(x) \to Q(x)\right)$$
+We've already seen how to evaluate the negation of a quantified statement, we swap a universal to an existential (or vice versa), and then negate the predicate:
+$$\exists x \in D, \lnot \left(P(x) \to Q(x)\right)$$
+Now if we remember back to our section on truth tables for logical arguments, specifically for a Modus Ponens argument, we'll recall that $P(x) \to Q(x)$ is vacuously truth when $P(x)$ is false, and is true when both $P(x)$ and $Q(x)$ are true, so the only time $P(x) \to Q(x)$ is false, is when $P(x)$ is true but $Q(x)$ is false. That is, when our \emph{premis} is true but our \emph{conclusion} is false.
+
+We can use this to formally define a counterexample
+
+\begin{dfn}[label={def:counterexample}]{Counterexample}{dfnCounterexample}
+    For a statement of the form $$P(x) \implies Q(x)$$ a \emph{counterexample} can be defined as
+    $$\exists a \in D, P(a) \land \lnot Q(a)$$
+\end{dfn}
