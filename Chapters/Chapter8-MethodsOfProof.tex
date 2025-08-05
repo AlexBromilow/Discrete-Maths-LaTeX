@@ -1,0 +1,109 @@
+\chapter{Methods of Proof}
+
+in this chapter we're going to look at several different methods for proving a theorem. Which method is appropriate to use will depend on the premises and information available in the theorem, with us often having to try more than one of these methods until we find the one that works best.
+
+\section{Division Into Cases}
+The first method of proof we'll look at is \emph{division into cases}. This method is useful for when there are distinct cases included within a theorem that may yield different results. Let's consider the following theorem:
+
+\begin{theorem}[label={theorem:SquareIntegerParity}]{Parity of Squared Integers}{thmSquareIntegerParity}
+    The square of an integer has the same parity. I.e. if $x$ is even, then $x^2$ is even. If $x$ is odd, then $x^2$ is odd.
+\end{theorem}
+
+In this theorem there are 2 distinct cases, the case where the integer is even and the one where it is odd. Let's evaluate each case specifically in our proof:
+\begin{proof}
+    \begin{enumerate}
+        \item Assume $n$ is even. By \cref{def:evenInteger}, $\exists k_e \in \Z$ such that $n = 2k_e$. Therefore
+              \begin{align*}
+                  n^2 & = (2k_e)^2              \\
+                      & = 4k_e^2                \\
+                      & = 2 \left(2k_e^2\right)
+              \end{align*}
+              By the rules of integers, if $k_e \in \Z$ then $k_e^2 \in \Z$. Thefore we can say $\exists k_1 \in \Z$ such that $k_1 = 2k_e^2$. Therefore $\exists k_1 \in \Z$ such that $n^2 = 2k_1$, so $n^2$ is even.
+        \item Assume $n$ is odd. By \cref{def:oddInteger}, $\exists k_o \in \Z$ such that $n = 2k_o + 1$. Therefore:
+              \begin{align*}
+                  n^2 & = (2k_o)^2             \\
+                      & = (2k_o + 1)(2k_o + 1) \\
+                      & = 4k_o^2 + 4k_o + 1    \\
+                      & = 2(2k_o^2 + 2k_o) + 1
+              \end{align*}
+              By the rules of the integers, if $k_o \in \Z$ then $k_o^2 \in \Z$. Therefore we can say $\exists k_2 \in \Z$ such that $k_2 = 2k_o^2 + 2k_o$. Therefore $\exists k_2 \in \Z$ such that $n^2 = 2k_2 + 1$. By \cref{def:oddInteger}, $n^2$ is odd.
+    \end{enumerate}
+    In all cases, if $n \in \Z$, then $n$ and $n^2$ have the same parity.
+\end{proof}
+
+This theorem can be thought of as being of the form
+$$P(x) \lor Q(x) \implies R(x)$$
+where $P(x)$ is \emph{x is even}, $Q(x)$ is \emph{x is odd} and $R(x)$ is \emph{$x^2$ has the same parity as $x$}.
+
+Theorems of this form are where Division into Cases is best used. However be aware that proof of this nature requires one proof per case so should not be used when there are a large number of cases.
+
+\section{Proof by Contradiction}
+Recall in \cref{chap:logicalArguments}, our definiton for a contradiction,  \cref{def:contradictionArgument}, defined a contradiction as an argument of the form
+$$ \lnot p \to c$$
+$$\text{Therefore, } p$$
+This definition tells us that if we want to prove something, we can assume that it is false and then show that this leads to a contradiction (from \cref{def:contradiction}).
+
+Let's take a look at an example
+
+\begin{exmpl}[label={exmpl:ContradictionProof}]{Proof by Contradiction}{xmplContradictionProof}
+    Let's say we want to prove the following:
+    \begin{center}
+        No integer is both even and odd
+    \end{center}
+
+    To prove this, let's first assume the opposite, there is some integer that is both even and odd. In other words
+    $$\exists k_0 \in \Z, k_0 \text{ is both even and odd.}$$
+    By \cref{def:evenInteger,def:oddInteger}, this would mean that $\exists k_1,k_2 \in \Z$ such that $k_0 = 2k_1$ and $k_0 = 2k_2 + 1$. We can then manipualte this to get
+    \begin{align*}
+        2k_1                  & = 2k_2 + 1    \\
+        \implies 2(k_1 - k_2) & = 1           \\
+        \implies k_1 - k_2    & = \frac{1}{2}
+    \end{align*}
+    $k_1$ and $k_2$ are both integers, therefore $k_1 - k_2$ is also an integer. So if suhc a $k_0$ did exist, this would lead us to conclude that $\frac{1}{2}$ is an integer. This is clearly not true.
+
+    Therefore, no such $k_0$ exists.
+\end{exmpl}
+\newpage
+Let's try another example
+
+\begin{exmpl}[label={exmpl:InfinitePrimes}]{Infinite Primes}{xmplInfinitePrimes}
+    Let's consider the following question, \emph{are there infinitely many primes?}
+
+    First lets remind ourselves what \emph{prime} actually means. A number $p$ is prime if it is \emph{divisible} (\cref{def:divisibility}) by only 1 and itself.
+
+    Let's also define that a number $c$ is \emph{composite} if it is an integer $> 1$ and is not prime.
+
+    We will also say that every composite number can be written as a product of primes (we will not prove this here but a proof can be found online).
+
+    Now lets prove that there are, in fact, infinitely many primes.
+    \begin{proof}
+        Let's assume there are only \emph{finitely} many primes. Let's call them
+        $$p_1,p_2,...,p_n$$
+        Now consider $p = p_1p_2....p_n + 1$, that is the product of \emph{all} the primes, plus one. Since $p > p_n$, $p$ must be a composite number, by our assumption of finitely many primes.
+
+        If $p$ is composite, we should be able to factor out a prime number, by the theorem stated above. Let's call that factor $p_k$ where $p_1 \leq p_k \leq p_n$. If we divide $p$ by $p_k$ we get
+        $$\frac{p}{p_k} = p_1p_2...p_{k-1}p_{k+1}...p_n + \frac{1}{p_k}$$
+        The remainder of $frac{1}{p_k}$ at the end tells us that $p$ is not divisible by $p_k$. Since $p_k$ can be \emph{any} prime, $p$ is therefore not divisible by \emph{any} prime. Therefore $p$ cannot be a composite number.
+
+        This is a contradiction, therefore our assumption of finitely many primes is false.
+    \end{proof}
+\end{exmpl}
+
+\section{Proof by Contrapositive}
+Recall our definiton for the contrapositive, \cref{def:contrapositive}, stated that
+$$p \to q \equiv \lnot q \to \lnot p$$
+This gives us another method of proof, rather than trying to prove $P(x) \implies Q(x)$, we can instead try to prove $\lnot Q(x) \implies \lnot P(x)$. Let's take a look at an example
+
+\begin{exmpl}[label={exmpl:ContrapositiveProof}]{Proof by Contrapositive}{xmplContrapositiveProof}
+    Let's say we want to prove the following
+    \begin{center}
+        If $n^2$ is even, then $n$ is even
+    \end{center}
+    If we want to write this out in logical form it would be
+    $$\forall n \in \Z, \text{ $n^2$ is even } -> \text{ $n$ is even.}$$
+    The contrapositive of this would be
+    $$\forall n \in \Z, \text{ $n$ is not even } -> \text{ $n^2$ is not even.}$$
+    This is exactly what we proved in \cref{theorem:SquareIntegerParity}, that an integer and its square have the same parity.
+
+    Therefore, since our contrapositive is true, or original statement must also be true.
+\end{exmpl}
